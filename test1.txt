@@ -1,3 +1,4 @@
-Test Archivo Creado desdes Github. NO GIT. NO CONSOLA
-Linea escrita desde el repo local. GIT. CONSOLA
-Test Pull . Github.
+Test Archivo Creado From Github.
+Linea escrita desde el repo local. From GIT  CONSOLE
+Test Pull .From Github.
+Test Diff. From Github
