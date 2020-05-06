@@ -1,4 +1,0 @@
-Test Archivo Creado From Github.
-Linea escrita desde el repo local. From GIT  CONSOLE
-Test Pull .From Github.
-Test Diff. From Github
