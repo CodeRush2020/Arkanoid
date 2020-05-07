@@ -1,3 +1,2 @@
-INDEX VERSION 1.131+/home/icomp2015/Desktop/Arkanoid/eclipse-workspace-java/.metadata/.plugins/org.eclipse.jdt.core
-1114786703.index
+INDEX VERSION 1.131+/home/icomp2015/Desktop/Arkanoid/Arkanoid/eclipse-workspace-java/.metadata/.plugins/org.eclipse.jdt.core
 646308851.index
