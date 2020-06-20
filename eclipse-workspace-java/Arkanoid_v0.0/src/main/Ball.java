@@ -3,26 +3,16 @@ package main;
 import java.awt.Color;
 import java.awt.Graphics;
 
-class Ball extends GameObject {
-	public static final int SCREEN_WIDTH = 800;
-	public static final int SCREEN_HEIGHT = 600;
+class Ball extends GameObject implements DisplayElement {
 
 	public static final double BALL_RADIUS = 10.0;
 	public static final double BALL_VELOCITY = 0.7;
 
-	public static final double PADDLE_WIDTH = 60.0;
-	public static final double PADDLE_HEIGHT = 20.0;
-	public static final double PADDLE_VELOCITY = 0.6;
 
-	public static final double BLOCK_WIDTH = 60.0;
-	public static final double BLOCK_HEIGHT = 20.0;
+	public static final int SCREEN_WIDTH = 800;// to display 
+	public static final int SCREEN_HEIGHT = 600;// to display 
 
-	public static final int COUNT_BLOCKS_X = 11;
-	public static final int COUNT_BLOCKS_Y = 4;
 
-	public static final int PLAYER_LIVES = 5;
-
-	public static final double FT_SLICE = 1.0;
 	public static final double FT_STEP = 1.0;
 	double x, y;
 	double radius = BALL_RADIUS;
@@ -74,5 +64,10 @@ class Ball extends GameObject {
 	double bottom() {
 		return y + radius;
 	}
-
+	public double getRadius(){
+		return BALL_RADIUS;
+	}
+	public double getVelocity(){
+		return BALL_VELOCITY;
+	}
 }

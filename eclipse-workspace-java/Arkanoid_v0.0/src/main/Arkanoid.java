@@ -14,25 +14,14 @@ import java.util.List;
 
 import javax.swing.JFrame;
 
-public class Arkanoid extends JFrame implements KeyListener {
+public class Arkanoid extends JFrame implements KeyListener {//keylistener para eventos
 
 	private static final long serialVersionUID = 1L;
 
 	/* CONSTANTS */
 
-	public static final int SCREEN_WIDTH = 800;
-	public static final int SCREEN_HEIGHT = 600;
-
-	public static final double BALL_RADIUS = 10.0;
-	public static final double BALL_VELOCITY = 0.7;
-
-	public static final double PADDLE_WIDTH = 60.0;
-	public static final double PADDLE_HEIGHT = 20.0;
-	public static final double PADDLE_VELOCITY = 0.6;
-
-	public static final double BLOCK_WIDTH = 60.0;
-	public static final double BLOCK_HEIGHT = 20.0;
-
+	public static final int SCREEN_WIDTH = 800;// to display 
+	public static final int SCREEN_HEIGHT = 600;// to display 
 	public static final int COUNT_BLOCKS_X = 11;
 	public static final int COUNT_BLOCKS_Y = 4;
 
@@ -52,7 +41,7 @@ public class Arkanoid extends JFrame implements KeyListener {
 	private Ball ball = new Ball(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 	private List<Brick> bricks = new ArrayList<Brick>();
 	private ScoreBoard scoreboard = new ScoreBoard();
-
+	//private Screen screen = new Screen();
 	private double lastFt;
 	private double currentSlice;
 
@@ -64,11 +53,11 @@ public class Arkanoid extends JFrame implements KeyListener {
 	void testCollision(Paddle mPaddle, Ball mBall) {
 		if (!isIntersecting(mPaddle, mBall))
 			return;
-		mBall.velocityY = -BALL_VELOCITY;
+		mBall.velocityY = -ball.getVelocity();
 		if (mBall.x < mPaddle.x)
-			mBall.velocityX = -BALL_VELOCITY;
+			mBall.velocityX = -ball.getVelocity();
 		else
-			mBall.velocityX = BALL_VELOCITY;
+			mBall.velocityX = ball.getVelocity();
 	}
 
 	public void testCollision(Brick mBrick, Ball mBall, ScoreBoard scoreboard) {
@@ -91,9 +80,9 @@ public class Arkanoid extends JFrame implements KeyListener {
 		double minOverlapY = ballFromTop ? overlapTop : overlapBottom;
 
 		if (minOverlapX < minOverlapY) {
-			mBall.velocityX = ballFromLeft ? -BALL_VELOCITY : BALL_VELOCITY;
+			mBall.velocityX = ballFromLeft ? -ball.getVelocity() : ball.getVelocity();
 		} else {
-			mBall.velocityY = ballFromTop ? -BALL_VELOCITY : BALL_VELOCITY;
+			mBall.velocityY = ballFromTop ? -ball.getVelocity() : ball.getVelocity();
 		}
 	}
 
@@ -103,8 +92,9 @@ public class Arkanoid extends JFrame implements KeyListener {
 
 		for (int iX = 0; iX < COUNT_BLOCKS_X; ++iX) {
 			for (int iY = 0; iY < COUNT_BLOCKS_Y; ++iY) {
-				bricks.add(new Brick((iX + 1) * (BLOCK_WIDTH + 3) + 22,
-						(iY + 2) * (BLOCK_HEIGHT + 3) + 20));
+			
+				//bricks.add(new Brick((iX + 1) * (getBlockWidth() + 3) + 22,(iY + 2) * (getBlockHeight() + 3) + 20));
+				bricks.add(new Brick((iX + 1) * (60.0  + 3) + 22,(iY + 2) * (20 + 3) + 20));
 			}
 		}
 	}

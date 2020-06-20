@@ -5,7 +5,7 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 
-public class ScoreBoard {
+public class ScoreBoard implements DisplayElement {
 
 	private static final int PLAYER_LIVES = 5;
 	private static final String FONT = "Courier New";
@@ -52,7 +52,7 @@ public class ScoreBoard {
 		text = "Score: " + score + "  Lives: " + lives;
 	}
 
-	void draw(Graphics g) {
+	public void draw(Graphics g) {
 		if (win || gameOver) {
 			font = font.deriveFont(50f);
 			FontMetrics fontMetrics = g.getFontMetrics(font);

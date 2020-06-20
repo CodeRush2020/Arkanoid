@@ -3,26 +3,12 @@ package main;
 import java.awt.Color;
 import java.awt.Graphics;
 
-class Paddle extends Rectangle {
+class Paddle extends Rectangle implements DisplayElement {
 	public static final int SCREEN_WIDTH = 800;
-	public static final int SCREEN_HEIGHT = 600;
-
-	public static final double BALL_RADIUS = 10.0;
-	public static final double BALL_VELOCITY = 0.7;
-
 	public static final double PADDLE_WIDTH = 60.0;
 	public static final double PADDLE_HEIGHT = 20.0;
 	public static final double PADDLE_VELOCITY = 0.6;
 
-	public static final double BLOCK_WIDTH = 60.0;
-	public static final double BLOCK_HEIGHT = 20.0;
-
-	public static final int COUNT_BLOCKS_X = 11;
-	public static final int COUNT_BLOCKS_Y = 4;
-
-	public static final int PLAYER_LIVES = 5;
-
-	public static final double FT_SLICE = 1.0;
 	public static final double FT_STEP = 1.0;
 	double velocity = 0.0;
 
@@ -56,8 +42,17 @@ class Paddle extends Rectangle {
 			velocity = 0.0;
 		}
 	}
-
-	void draw(Graphics g) {
+	double getWidth() {
+		return PADDLE_WIDTH;
+	}
+	double getHeigt() {
+		return PADDLE_HEIGHT;
+	}
+	double getVelocity() {
+		return PADDLE_VELOCITY;
+	}
+	
+	public void draw(Graphics g) {
 		g.setColor(Color.RED);
 		g.fillRect((int) (left()), (int) (top()), (int) sizeX, (int) sizeY);
 	}
