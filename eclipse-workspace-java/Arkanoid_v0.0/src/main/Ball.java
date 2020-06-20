@@ -29,12 +29,12 @@ class Ball extends GameObject {
 	double velocityX = BALL_VELOCITY;
 	double velocityY = BALL_VELOCITY;
 
-	Ball(int x, int y) {
+	public Ball(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
 
-	void draw(Graphics g) {
+	public void draw(Graphics g) {
 		g.setColor(Color.RED);
 		g.fillOval((int) left(), (int) top(), (int) radius * 2,
 				(int) radius * 2);

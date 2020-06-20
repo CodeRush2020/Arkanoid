@@ -41,7 +41,7 @@ public class Arkanoid extends JFrame implements KeyListener {
 	public static final double FT_SLICE = 1.0;
 	public static final double FT_STEP = 1.0;
 
-	private static final String FONT = "Courier New";
+//	private static final String FONT = "Courier New";
 
 	/* GAME VARIABLES */
 
@@ -71,7 +71,7 @@ public class Arkanoid extends JFrame implements KeyListener {
 			mBall.velocityX = BALL_VELOCITY;
 	}
 
-	void testCollision(Brick mBrick, Ball mBall, ScoreBoard scoreboard) {
+	public void testCollision(Brick mBrick, Ball mBall, ScoreBoard scoreboard) {
 		if (!isIntersecting(mBrick, mBall))
 			return;
 
