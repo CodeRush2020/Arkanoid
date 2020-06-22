@@ -23,7 +23,7 @@ public class ScoreBoard implements DisplayElement {
 
 	ScoreBoard() {
 		font = new Font(FONT, Font.PLAIN, 12);
-		text = "Welcome to Arkanoid Java version";
+		text = "Bienveido a Arkanoid !";
 	}
 
 	void increaseScore() {
@@ -54,7 +54,7 @@ public class ScoreBoard implements DisplayElement {
 
 	public void draw(Graphics g) {
 		if (win || gameOver) {
-			font = font.deriveFont(50f);
+			font = font.deriveFont(50f);	
 			FontMetrics fontMetrics = g.getFontMetrics(font);
 			g.setColor(Color.WHITE);
 			g.setFont(font);

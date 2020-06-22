@@ -11,40 +11,99 @@ import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
 import javax.swing.JFrame;
-
 public class Arkanoid extends JFrame implements KeyListener {//keylistener para eventos
-
 	private static final long serialVersionUID = 1L;
-
-	/* CONSTANTS */
-
-	public static final int SCREEN_WIDTH = 800;// to display 
-	public static final int SCREEN_HEIGHT = 600;// to display 
+	public static final int SCREEN_WIDTH = 800; 
+	public static final int SCREEN_HEIGHT = 600; 
 	public static final int COUNT_BLOCKS_X = 11;
 	public static final int COUNT_BLOCKS_Y = 4;
-
 	public static final int PLAYER_LIVES = 5;
-
 	public static final double FT_SLICE = 1.0;
 	public static final double FT_STEP = 1.0;
-
-//	private static final String FONT = "Courier New";
-
-	/* GAME VARIABLES */
-
 	private boolean tryAgain = false;
 	private boolean running = false;
-
 	private Paddle paddle = new Paddle(SCREEN_WIDTH / 2, SCREEN_HEIGHT - 50);
 	private Ball ball = new Ball(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 	private List<Brick> bricks = new ArrayList<Brick>();
 	private ScoreBoard scoreboard = new ScoreBoard();
-	//private Screen screen = new Screen();
 	private double lastFt;
 	private double currentSlice;
 
+	private void test(){
+		BufferStrategy bf = this.getBufferStrategy();
+		Graphics g = null;
+
+		try {
+
+			g = bf.getDrawGraphics();
+
+			g.setColor(Color.black);
+			g.fillRect(0, 0, getWidth(), getHeight());
+			scoreboard.draw(g);
+
+		} finally {
+			g.dispose();
+		}
+
+		bf.show();
+
+	}
+
+	public void run() {
+		BufferStrategy bf = this.getBufferStrategy();
+		Graphics g = bf.getDrawGraphics();
+		g.setColor(Color.black);
+		g.fillRect(0, 0, getWidth(), getHeight());
+		running = true;
+
+		while (running) {
+
+			long time1 = System.currentTimeMillis();
+
+			if (!scoreboard.gameOver && !scoreboard.win) {
+				tryAgain = false;
+				update();
+				drawScene(ball, bricks, scoreboard);
+
+				// to simulate low FPS
+				try {
+					Thread.sleep(10);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+
+			} else {
+				if (tryAgain) {
+					tryAgain = false;
+					initializeBricks(bricks);
+					scoreboard.lives = PLAYER_LIVES;
+					scoreboard.score = 0;
+					scoreboard.win = false;
+					scoreboard.gameOver = false;
+					scoreboard.updateScoreboard();
+					ball.x = SCREEN_WIDTH / 2;
+					ball.y = SCREEN_HEIGHT / 2;
+					paddle.x = SCREEN_WIDTH / 2;
+				}
+			}
+
+			long time2 = System.currentTimeMillis();
+			double elapsedTime = time2 - time1;
+
+			lastFt = elapsedTime;
+
+			double seconds = elapsedTime / 1000.0;
+			if (seconds > 0.0) {
+				double fps = 1.0 / seconds;
+				this.setTitle("FPS: " + fps);
+			}
+
+		}
+
+		this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+
+	}
 	boolean isIntersecting(GameObject mA, GameObject mB) {
 		return mA.right() >= mB.left() && mA.left() <= mB.right()
 				&& mA.bottom() >= mB.top() && mA.top() <= mB.bottom();
@@ -115,62 +174,6 @@ public class Arkanoid extends JFrame implements KeyListener {//keylistener para 
 
 	}
 
-	void run() {
-
-		BufferStrategy bf = this.getBufferStrategy();
-		Graphics g = bf.getDrawGraphics();
-		g.setColor(Color.black);
-		g.fillRect(0, 0, getWidth(), getHeight());
-
-		running = true;
-
-		while (running) {
-
-			long time1 = System.currentTimeMillis();
-
-			if (!scoreboard.gameOver && !scoreboard.win) {
-				tryAgain = false;
-				update();
-				drawScene(ball, bricks, scoreboard);
-
-				// to simulate low FPS
-				try {
-					Thread.sleep(10);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-
-			} else {
-				if (tryAgain) {
-					tryAgain = false;
-					initializeBricks(bricks);
-					scoreboard.lives = PLAYER_LIVES;
-					scoreboard.score = 0;
-					scoreboard.win = false;
-					scoreboard.gameOver = false;
-					scoreboard.updateScoreboard();
-					ball.x = SCREEN_WIDTH / 2;
-					ball.y = SCREEN_HEIGHT / 2;
-					paddle.x = SCREEN_WIDTH / 2;
-				}
-			}
-
-			long time2 = System.currentTimeMillis();
-			double elapsedTime = time2 - time1;
-
-			lastFt = elapsedTime;
-
-			double seconds = elapsedTime / 1000.0;
-			if (seconds > 0.0) {
-				double fps = 1.0 / seconds;
-				this.setTitle("FPS: " + fps);
-			}
-
-		}
-
-		this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
-
-	}
 
 	private void update() {
 
@@ -260,8 +263,6 @@ public class Arkanoid extends JFrame implements KeyListener {//keylistener para 
 
 	}
 
-	public static void main(String[] args) {
-		new Arkanoid().run();
-	}
+
 
 }
