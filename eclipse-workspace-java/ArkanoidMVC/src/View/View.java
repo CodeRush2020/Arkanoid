@@ -64,18 +64,18 @@ public class View extends javax.swing.JFrame implements Observer {
             // score
             g.setColor(Color.WHITE);
             g.setFont(new Font("Arial", BOLD, 20));
-            g.drawString("score: " + model.score, 5, 30);
-            g.drawString("lifes: " + model.ball.lives, 5, 50);
+            g.drawString("puntaje: " + model.score, 5, 30);
+            g.drawString("vidas: " + model.ball.lives, 5, 50);
 
         } else if (Model.dead) {
             g.setColor(Color.RED);
             g.setFont(new Font("Arial", BOLD, 55));
-            g.drawString("You're dead!", WIDTH / 2 - 220, HEIGHT / 2);
+            g.drawString("Perdiste!", WIDTH / 2 - 220, HEIGHT / 2);
         } else if (Model.win) {
             System.out.println("win");
             g.setColor(Color.GREEN);
             g.setFont(new Font("Arial", BOLD, 55));
-            g.drawString("You win!", WIDTH / 2 - 220, HEIGHT / 2);
+            g.drawString("Ganaste!", WIDTH / 2 - 220, HEIGHT / 2);
         }
     }
 
