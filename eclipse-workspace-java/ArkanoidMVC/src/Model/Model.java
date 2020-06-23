@@ -11,7 +11,7 @@ import java.util.Observable;
  */
 public class Model extends Observable {
     private int x, y, width, height, velocity;
-    private static final int PADDLE_WIDTH = 60, PADDLE_HEIGHT = 20;
+    private static final int PADDLE_WIDTH = 80, PADDLE_HEIGHT = 20;
     public static final int BLOCK_WIDTH = 60, BLOCK_HEIGHT = 20;
     public static final int BALL_RADIUS = 10, BALL_VELOCITY = 3;
 
