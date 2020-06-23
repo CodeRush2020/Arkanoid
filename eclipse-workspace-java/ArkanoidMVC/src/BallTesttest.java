@@ -1,3 +1,5 @@
+
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterAll;
@@ -5,9 +7,13 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+
+
+import Model.Ball;
 
 class BallTesttest {
-
+	Ball ball;
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 	}
@@ -18,6 +24,7 @@ class BallTesttest {
 
 	@BeforeEach
 	void setUp() throws Exception {
+		ball = new Ball(400, 350);
 	}
 
 	@AfterEach
@@ -25,8 +32,11 @@ class BallTesttest {
 	}
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void left() {
+        final double expected = 390;
+        final double actual = ball.left();
+        Assert.assertEquals(actual, expected);
+        
 	}
 
 }

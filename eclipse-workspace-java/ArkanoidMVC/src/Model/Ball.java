@@ -76,7 +76,7 @@ public class Ball {
         }
     }
 
-    double left() {
+    public double left() {
         return x - radius;
     }
 
