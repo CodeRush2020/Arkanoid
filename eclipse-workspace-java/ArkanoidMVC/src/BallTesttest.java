@@ -2,12 +2,13 @@
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.Assert;
+//import org.junit.Assert;
 
 
 import Model.Ball;
@@ -35,7 +36,16 @@ class BallTesttest {
 	void left() {
         final double expected = 390;
         final double actual = ball.left();
-        Assert.assertEquals(actual, expected);
+        final double epsilon = 1;
+        Assert.assertEquals(actual, expected,epsilon);
+        
+	}
+	@Test
+	void right() {
+        final double expected = 410;
+        final double actual = ball.right();
+        final double epsilon =1;
+        Assert.assertEquals(actual, expected,epsilon);
         
 	}
 

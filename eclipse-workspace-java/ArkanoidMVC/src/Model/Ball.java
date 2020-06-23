@@ -80,7 +80,7 @@ public class Ball {
         return x - radius;
     }
 
-    double right() {
+    public double right() {
         return x + radius;
     }
 
