@@ -7,10 +7,6 @@ import java.awt.event.KeyListener;
 import java.util.TimerTask;
 import java.util.Timer;
 
-/**
- *
- * @author David Berardi
- */
 public class Controller {
     private Model model;
     private View view;

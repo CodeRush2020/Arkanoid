@@ -1,9 +1,6 @@
 package Model;
 
-/**
- *
- * @author David Berardi
- */
+
 public class Ball {
     private int x, y, radius = Model.BALL_RADIUS, vel_x = Model.BALL_VELOCITY, vel_y = Model.BALL_VELOCITY;
     public static int lives = 3;

@@ -5,10 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
 
-/**
- *
- * @author David Berardi
- */
+
 public class Model extends Observable {
     private int x, y, width, height, velocity;
     private static final int PADDLE_WIDTH = 80, PADDLE_HEIGHT = 20;

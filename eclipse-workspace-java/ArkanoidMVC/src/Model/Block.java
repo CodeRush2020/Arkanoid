@@ -1,9 +1,5 @@
 package Model;
 
-/**
- *
- * @author David Berardi
- */
 public class Block {
     private int x, y, width = Model.BLOCK_WIDTH, height = Model.BLOCK_HEIGHT;
     public boolean destroyed = false;

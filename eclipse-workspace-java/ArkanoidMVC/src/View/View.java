@@ -11,10 +11,6 @@ import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JPanel;
 
-/**
- *
- * @author David Berardi
- */
 public class View extends javax.swing.JFrame implements Observer {
     private Model model;
     public final int WIDTH = 800;
