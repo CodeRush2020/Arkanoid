@@ -8,9 +8,9 @@ import java.util.Observable;
 
 public class Model extends Observable {
     private int x, y, width, height, velocity;
-    private static final int PADDLE_WIDTH = 80, PADDLE_HEIGHT = 20;
+    private static final int PADDLE_WIDTH = 200, PADDLE_HEIGHT = 20;
     public static final int BLOCK_WIDTH = 60, BLOCK_HEIGHT = 20;
-    public static final int BALL_RADIUS = 10, BALL_VELOCITY = 3;
+    public static final int BALL_RADIUS = 10, BALL_VELOCITY = 4;
 
     public static boolean dead = false;
     public static boolean win = false;
@@ -26,13 +26,21 @@ public class Model extends Observable {
 
         blocks = new ArrayList<>();
         ball = new Ball(400, 350);
+        //ball = new Ball(300, 250);
     }
 
     public void addBlock(int x, int y) {
-        blocks.add(new Block(x, y));
-
+    	
+        Block block= new Block(x,y);
+        CrunchSound crunchsound = new CrunchSound(block);
+        blocks.add(block);
         setChanged();
         notifyObservers();
+    }
+    public Block getBlock(int idList) {
+    	Block tempBlock;
+    	tempBlock= blocks.get(idList);
+        return tempBlock;
     }
 
     public void clean() {

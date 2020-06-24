@@ -1,12 +1,17 @@
 package Model;
 
-public class Block {
+import java.util.ArrayList;
+
+public class Block implements Subject{
     private int x, y, width = Model.BLOCK_WIDTH, height = Model.BLOCK_HEIGHT;
     public boolean destroyed = false;
+    private ArrayList <Observer> observers;
+    public boolean specialBlockFlag = false;
 
     public Block(int x, int y) {
         this.x = x;
         this.y = y;
+        observers = new ArrayList <Observer>();
     }
 
     public int getX() {
@@ -40,4 +45,27 @@ public class Block {
     double bottom() {
         return y + height / 2.0;
     }
+    
+    public void setSpecialBlockFlag(boolean state) {
+    	this.specialBlockFlag=state;
+    }
+    public boolean getSpecialBlockFlag() {
+    	return this.specialBlockFlag;
+    }
+
+    public void registerObserver (Observer o) {
+        observers.add(o);
+    }
+
+    public void removeObserver (Observer o) {
+
+    }
+
+    public void notifyObservers() {
+        for(int i=0; i < observers.size(); i++) {
+            Observer observer = (Observer)observers.get(i);
+            observer.update();
+            }
+    }   
+	
 }
