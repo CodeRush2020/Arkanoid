@@ -103,6 +103,7 @@ public class Ball {
 
         mBrick.destroyed = true;
         mBrick.notifyObservers();
+        //mBrick.powerBehavior();
         double overlapLeft = mBall.right() - mBrick.left();
         double overlapRight = mBrick.right() - mBall.left();
         double overlapTop = mBall.bottom() - mBrick.top();

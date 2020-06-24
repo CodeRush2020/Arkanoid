@@ -8,7 +8,7 @@ import java.util.Observable;
 
 public class Model extends Observable {
     private int x, y, width, height, velocity;
-    private static final int PADDLE_WIDTH = 200, PADDLE_HEIGHT = 20;
+    private static final int PADDLE_WIDTH = 60, PADDLE_HEIGHT = 20;
     public static final int BLOCK_WIDTH = 60, BLOCK_HEIGHT = 20;
     public static final int BALL_RADIUS = 10, BALL_VELOCITY = 4;
 
@@ -19,13 +19,18 @@ public class Model extends Observable {
 
     public List<Block> blocks;
     public Ball ball;
-
+    public PowerUpBehavior risePaddle;
+    public PowerUpBehavior reducePaddle;
+    public PowerUpBehavior invisiblePaddle;
+    
     public Model() {
         this.width = PADDLE_WIDTH;
         this.height = PADDLE_HEIGHT;
-
         blocks = new ArrayList<>();
         ball = new Ball(400, 350);
+        risePaddle = new RisePaddle();
+        reducePaddle = new ReducePaddle();
+        invisiblePaddle = new InvisiblePaddle();
         //ball = new Ball(300, 250);
     }
 
@@ -138,9 +143,19 @@ public class Model extends Observable {
         while (it.hasNext()) {
             Block block = it.next();
             ball.testCollision(block, ball);
+
             if (block.destroyed) {
                 score++;
                 it.remove();
+                if(block.getSpecialBlockFlag()==1) {
+                	risePaddle.powerUp(this);
+                }
+                if(block.getSpecialBlockFlag()==2) {
+                	reducePaddle.powerUp(this);
+                }
+                if(block.getSpecialBlockFlag()==3) {
+                	invisiblePaddle.powerUp(this);
+                }
             }
         }
 

@@ -6,8 +6,11 @@ public class Block implements Subject{
     private int x, y, width = Model.BLOCK_WIDTH, height = Model.BLOCK_HEIGHT;
     public boolean destroyed = false;
     private ArrayList <Observer> observers;
-    public boolean specialBlockFlag = false;
-
+   // public boolean specialBlockFlag = false;
+    public int specialBlockFlag = 0;
+/*
+ * 0:simple, 1: aumentar, 2:Reducir, 3:Invisible
+ */
     public Block(int x, int y) {
         this.x = x;
         this.y = y;
@@ -46,10 +49,10 @@ public class Block implements Subject{
         return y + height / 2.0;
     }
     
-    public void setSpecialBlockFlag(boolean state) {
+    public void setSpecialBlockFlag(int state) {
     	this.specialBlockFlag=state;
     }
-    public boolean getSpecialBlockFlag() {
+    public int getSpecialBlockFlag() {
     	return this.specialBlockFlag;
     }
 
