@@ -1,0 +1,18 @@
+**********************************************************
+
+COMO INSTALAR:
+
+**********************************************************
+1. Descargar la aplicación desde el repositorio de GitHub.
+	https://github.com/CodeRush2020/Arkanoid
+2. Descomprimir el archivo .zip descargado.
+3. Iniciar la aplicación, que consta de un archivo .jar.
+	Arkanoid-v2.0.jar
+4. El videojuego ARKANOID está en ejecución.
+5. Enjoy the game by CodeRush
+*********************************************************
+
+DONACIONES:
+
+*********************************************************
+https://paypal.com/CodeRush 
